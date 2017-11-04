@@ -21,6 +21,7 @@ MA 02111-1307, USA. */
 #ifndef DSR_PDB_POINT_H
 #define DSR_PDB_POINT_H
 #include <iostream>
+#include <cassert>
 #include <dsrpdb/config.h>
 
 #ifdef PDB_USE_CGAL 
