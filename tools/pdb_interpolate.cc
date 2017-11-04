@@ -22,6 +22,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 #ifdef PDB_USE_BOOST_PROGRAM_OPTIONS
 #include <boost/program_options.hpp>
@@ -55,7 +56,7 @@ typedef Protein_graph_traits::edge_descriptor Edge_descriptor;
 
 struct Spherical_point {
   Spherical_point(){
-    for (unsigned int i=0; i< 3; ++i){ p_[i]= std::numeric_limits<double>::infinity();}
+    for (unsigned int i=0; i< 3; ++i){ p_[i]= HUGE_VAL;}
   }
   Spherical_point(double phi, double psi, double r){
     p_[0]=phi;
@@ -74,7 +75,7 @@ struct Spherical_point {
   }
 
   operator bool() const {
-    return p_[0] != std::numeric_limits<double>::infinity();
+    return p_[0] != HUGE_VAL;
   }
 
   double p_[3];

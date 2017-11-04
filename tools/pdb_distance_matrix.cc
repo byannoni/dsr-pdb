@@ -23,6 +23,7 @@
 #include <iostream>
 #include <fstream>
 #include <dsrpdb/distance.h>
+#include <cmath>
 
 #ifdef PDB_USE_BOOST_PROGRAM_OPTIONS
 #include <boost/program_options.hpp>
@@ -44,7 +45,7 @@ int main(int argc, char *argv[]){
   bool verbose=false;
   bool interactive=false;
   bool all_atoms=false;
-  double contact_map_threshold=std::numeric_limits<double>::infinity();
+  double contact_map_threshold=HUGE_VAL;
 
 #ifdef PDB_USE_BOOST_PROGRAM_OPTIONS
   {
@@ -174,7 +175,7 @@ int main(int argc, char *argv[]){
 
       Magick::Image im(geom, "red");
 
-      if (contact_map_threshold != std::numeric_limits<double>::infinity()){
+      if (contact_map_threshold != HUGE_VAL){
 	for (int j=0; j< arr.dim1(); ++j){
 	  for (int k=0; k< arr.dim2(); ++k){
 	    if (arr[j][k] < contact_map_threshold){

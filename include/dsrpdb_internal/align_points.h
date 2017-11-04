@@ -9,6 +9,7 @@
 #include <cassert>
 #include <vector>
 #include <iterator>
+#include <cmath>
 
 namespace dsrpdb_internal {
 
@@ -273,7 +274,7 @@ namespace dsrpdb_internal {
 				     OItM m) {
     
     std::vector<dsrpdb::Point> p_0(b_0, e_0), p_1(b_1, e_1);
-    double dist= std::numeric_limits<double>::infinity();
+    double dist= HUGE_VAL;
     dsrpdb::Squared_distance sd;
 
     typedef std::vector<int>::const_iterator ItM;
